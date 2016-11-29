@@ -17,7 +17,7 @@
 <body>
     <div>
         <ul id="messages"></ul>
-        <form action="">
+        <form action="" id="form">
             <input type="text" autocomplet="off" id="m">
             <button>Send</button>
         </form>
@@ -26,9 +26,13 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         var socket = io();
-        $("form").submit( function(event){
-            socket.emit('chat message', $("#m").val());
-            $("#m").val("");
+        var el = document.getElementById("form");
+        var input_el = document.getElementById("m");
+        el.addEventListener("submit", function(event) {
+            event.preventDefault();
+            var val = input_el.value;
+            socket.emit('chat message', val);
+            input_el.value = '';
             return false;
         });
         socket.on("chat message", function(msg) {
