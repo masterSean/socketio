@@ -2,25 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font: 13px Helvetica, Arial; }
-        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-        #messages { list-style-type: none; margin: 0; padding: 0; }
-        #messages li { padding: 5px 10px; }
-        #messages li:nth-child(odd) { background: #eee; }
-    </style>
+    <title>Chat-App</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
-    <div>
-        <ul id="messages"></ul>
-        <form action="" id="form">
-            <input type="text" autocomplet="off" id="m">
-            <button>Send</button>
-        </form>
+    <div class="page-header"></div>
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <div id="panel" class="panel panel-default">
+                <ul id="messages"></ul>
+                <div id="end"></div>
+                <form action="" id="form">
+                    <input type="text" autocomplete="off" id="m">
+                </form>
+            </div>
+        </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>

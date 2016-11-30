@@ -13,6 +13,7 @@ mongoClient.connect("mongodb://root:chatapp@ds115918.mlab.com:15918/chat-app-db"
     const db = database;
 
     app.use("/js", express.static(path.join(__dirname, "js")));
+    app.use("/css", express.static(path.join(__dirname, "css")));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true,
@@ -20,8 +21,21 @@ mongoClient.connect("mongodb://root:chatapp@ds115918.mlab.com:15918/chat-app-db"
 
     app.set("port", (process.env.PORT || 5000));
 
-    app.get("/", function(req, res){
+    app.get("/chat", function(req, res){
         res.sendFile(__dirname + "/index.html");
+    });
+
+    app.get("/", function(req, res){
+        res.sendFile(__dirname + "/login.html");
+    });
+
+    app.post("/logger", function(req, res){
+        db.collection('users').findOne(req.body, function(err, result){
+            if (err) console.error(err)
+
+            if (!result) db.collection('users').save(req.body);
+        });
+        res.redirect('/chat');
     });
 
     io.on("connection", function(socket) {
@@ -39,13 +53,13 @@ mongoClient.connect("mongodb://root:chatapp@ds115918.mlab.com:15918/chat-app-db"
         console.log("Node app is running on port", app.get("port"));
     });
 
-    app.get("/fetch_all", function(req, res) {
+    app.get("/chat/fetch_all", function(req, res) {
         const test = db.collection('messages').find().toArray( function(err, results) {
             res.json(results);
         });
     });
 
-    app.post("/save_chat", function(req, res, next) {
+    app.post("/chat/save_chat", function(req, res, next) {
         db.collection('messages').save(req.body, function(err, result) { 
             if (err) console.error(err);
         });
