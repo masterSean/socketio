@@ -11,6 +11,10 @@
   "dependencies": {
     "cool-ascii-faces": "1.3.4",
     "express": "^4.10.2",
+    "mongodb": "^2.2.12",
     "socket.io": "^1.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
