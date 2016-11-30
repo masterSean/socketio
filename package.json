@@ -4,7 +4,8 @@
   "description": "",
   "main": "javascript.js",
   "scripts": {
-    "start": "npm-run-all --parallel watch:server watch:build",
+    "start": "node server.js",
+    "dev": "npm-run-all --parallel watch:server watch:build",
     "watch:build": "webpack --watch --color --display-error-details",
     "watch:server": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
