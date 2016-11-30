@@ -8,6 +8,7 @@
     "dev": "npm-run-all --parallel watch:server watch:build",
     "watch:build": "webpack --watch --color --display-error-details",
     "watch:server": "nodemon server.js",
+    "build": "webpack --progress --colors --display-error-details",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
