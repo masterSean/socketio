@@ -4,6 +4,7 @@ var input_el = document.getElementById("m");
 var base_url = window.location.href;
 var $ = require("jquery");
 
+/*
 $.get(base_url + "fetch_all", function(data) {
     var $url = $("#messages");
     $.each(data, function(key, val) {
@@ -11,11 +12,12 @@ $.get(base_url + "fetch_all", function(data) {
         $url.append($li);
     });
 });
+*/
 
 el.addEventListener("submit", function(event) {
     event.preventDefault();
     var val = input_el.value;
-    $.post(base_url + 'save_chat', { name: 'anonymous', message: val });
+    //$.post(base_url + 'save_chat', { name: 'anonymous', message: val });
     socket.emit("chat message", val);
     input_el.value = "";
     return false;

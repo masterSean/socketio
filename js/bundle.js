@@ -40,17 +40,17 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var socket = io();
 	var el = document.getElementById("form");
 	var input_el = document.getElementById("m");
 	var base_url = window.location.href;
-	var $ = __webpack_require__(8);
+	var $ = __webpack_require__(1);
 
+	/*
 	$.get(base_url + "fetch_all", function(data) {
 	    var $url = $("#messages");
 	    $.each(data, function(key, val) {
@@ -58,11 +58,12 @@
 	        $url.append($li);
 	    });
 	});
+	*/
 
 	el.addEventListener("submit", function(event) {
 	    event.preventDefault();
 	    var val = input_el.value;
-	    $.post(base_url + 'save_chat', { name: 'anonymous', message: val });
+	    //$.post(base_url + 'save_chat', { name: 'anonymous', message: val });
 	    socket.emit("chat message", val);
 	    input_el.value = "";
 	    return false;
@@ -79,8 +80,7 @@
 
 
 /***/ },
-
-/***/ 8:
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10306,5 +10306,4 @@
 
 
 /***/ }
-
-/******/ });
+/******/ ]);
