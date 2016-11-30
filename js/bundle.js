@@ -50,7 +50,6 @@
 	var base_url = window.location.href;
 	var $ = __webpack_require__(1);
 
-	/*
 	$.get(base_url + "fetch_all", function(data) {
 	    var $url = $("#messages");
 	    $.each(data, function(key, val) {
@@ -58,12 +57,11 @@
 	        $url.append($li);
 	    });
 	});
-	*/
 
 	el.addEventListener("submit", function(event) {
 	    event.preventDefault();
 	    var val = input_el.value;
-	    //$.post(base_url + 'save_chat', { name: 'anonymous', message: val });
+	    $.post(base_url + 'save_chat', { name: 'anonymous', message: val });
 	    socket.emit("chat message", val);
 	    input_el.value = "";
 	    return false;
