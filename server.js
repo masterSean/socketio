@@ -18,7 +18,7 @@ mongoClient.connect("mongodb://root:chatapp@ds115918.mlab.com:15918/chat-app-db"
         extended: true,
     }));
 
-    app.set("port", 5000);
+    app.set("port", (process.env.PORT || 5000));
 
     app.get("/", function(req, res){
         res.sendFile(__dirname + "/index.html");
