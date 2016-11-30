@@ -24,26 +24,6 @@
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="/js/custom.js" type="text/javascript"></script>
-    <script>
-        var socket = io();
-        var el = document.getElementById("form");
-        var input_el = document.getElementById("m");
-
-        el.addEventListener("submit", function(event) {
-            event.preventDefault();
-            var val = input_el.value;
-            socket.emit('chat message', val);
-            input_el.value = '';
-            return false;
-        });
-        socket.on("chat message", function(msg) {
-            var ul = document.getElementById("messages");
-            var li = document.createElement("LI");
-            var text = document.createTextNode(msg);
-            li.appendChild(text);
-            ul.appendChild(li);
-        });
-    </script>
+    <script src="/js/bundle.js" type="text/javascript"></script>
 </body>
 </html>
